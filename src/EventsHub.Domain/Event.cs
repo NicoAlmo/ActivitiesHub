@@ -1,4 +1,4 @@
-namespace Domain;
+namespace EventsHub.Domain;
 public class Event
 {
     public string Id { get; set; }= Guid.NewGuid().ToString();
