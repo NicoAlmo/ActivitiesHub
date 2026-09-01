@@ -1,0 +1,20 @@
+info:
+  name: Events - Get - 404
+  type: http
+  seq: 3
+
+http:
+  method: GET
+  url: "{{baseUrl}}/events/:eventId"
+  params:
+    - name: eventId
+      value: 0dfbf637-89fa-4f09-b770-04d169cf8ef4
+      type: path
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false
