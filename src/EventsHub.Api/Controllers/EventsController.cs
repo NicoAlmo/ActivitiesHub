@@ -2,28 +2,25 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using EventsHub.Application.Events.Queries;
 using EventsHub.Domain;
 using EventsHub.Persistence;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Validation;
 
 namespace EventsHub.Api.Controllers;
-public class EventsController(AppDbContext context) : EventsHubBaseController
+public class EventsController(IMediator mediator) : EventsHubBaseController
 {
     [HttpGet]
     public async Task<ActionResult<IReadOnlyList<Event>>> GetEventsAsync()
     {
-        return  await context.Events.ToListAsync();
+        return  await mediator.Send(new GetEventList.Query());
     }
 
     [HttpGet("{id}")]
     public async Task<ActionResult<Event>> GetEventDetailAsync(string id)
     {
-        var result = await context.Events.FindAsync(id);
-
-        if (result == null ) return NotFound ("The event was not found");
-
-        return result;
+        return await mediator.Send(new GetEventDetails.Query{Id=id});
     }
 }
