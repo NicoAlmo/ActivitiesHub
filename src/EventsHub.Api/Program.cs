@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using EventsHub.Persistence;
 using EventsHub.Application.Events.Queries;
+using EventsHub.Application.Core;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,6 +17,7 @@ builder.Services.AddCors();
 builder.Services.AddMediatR(opt=> 
     opt.RegisterServicesFromAssemblyContaining<GetEventList.Handler>());
 
+builder.Services.AddAutoMapper(typeof(MappingProfiles).Assembly);
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

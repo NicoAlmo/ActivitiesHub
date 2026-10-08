@@ -13,6 +13,7 @@ http:
         "id": "{{$guid}}",
         "title": "{{$randomCatchPhrase}}",
         "date": "{{$randomDateFuture}}",
+        "description": "{{$randomLoremParagraph}}",
         "category": "music",
         "isCancelled": false,
         "city": "{{$randomCity}}",
