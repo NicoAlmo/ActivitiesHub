@@ -6,13 +6,13 @@ import {
   CardContent,
   Chip,
   Typography,
-} from "@mui/material";
+} from '@mui/material'
 
 type Props = {
-  activity: Activity;
-  selectActivity: (id: string) => void;
-  deleteActivity: (id: string) => void;
-};
+  activity: Activity
+  selectActivity: (id: string) => void
+  deleteActivity: (id: string) => void
+}
 
 export default function ActivityCard({
   activity,
@@ -23,7 +23,7 @@ export default function ActivityCard({
     <Card sx={{ borderRadius: 3 }}>
       <CardContent>
         <Typography variant="h5">{activity.title}</Typography>
-        <Typography sx={{ color: "text.secondary", mb: 1 }}>
+        <Typography sx={{ color: 'text.secondary', mb: 1 }}>
           {activity.date}
         </Typography>
         <Typography variant="body2">{activity.description}</Typography>
@@ -32,10 +32,10 @@ export default function ActivityCard({
         </Typography>
       </CardContent>
       <CardActions
-        sx={{ display: "flex", justifyContent: "space-between", pb: 2 }}
+        sx={{ display: 'flex', justifyContent: 'space-between', pb: 2 }}
       >
         <Chip label={activity.category} variant="outlined" />
-        <Box sx={{ display: "flex", gap: 2 }}>
+        <Box sx={{ display: 'flex', gap: 2 }}>
           <Button
             onClick={() => deleteActivity(activity.id)}
             size="medium"
@@ -54,5 +54,5 @@ export default function ActivityCard({
         </Box>
       </CardActions>
     </Card>
-  );
+  )
 }

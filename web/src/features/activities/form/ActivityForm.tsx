@@ -1,10 +1,10 @@
-import { Box, Button, Paper, TextField, Typography } from "@mui/material";
+import { Box, Button, Paper, TextField, Typography } from '@mui/material'
 
 type Props = {
-  activity?: Activity;
-  closeForm: () => void;
-  submitForm: (activity: Activity) => void;
-};
+  activity?: Activity
+  closeForm: () => void
+  submitForm: (activity: Activity) => void
+}
 
 export default function ActivityForm({
   activity,
@@ -12,18 +12,18 @@ export default function ActivityForm({
   submitForm,
 }: Props) {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
-    event.preventDefault();
+    event.preventDefault()
 
-    const formData = new FormData(event.currentTarget);
-    const data: { [key: string]: FormDataEntryValue } = {};
+    const formData = new FormData(event.currentTarget)
+    const data: { [key: string]: FormDataEntryValue } = {}
     formData.forEach((value, key) => {
-      data[key] = value;
-    });
+      data[key] = value
+    })
 
-    if (activity) data.id = activity.id;
+    if (activity) data.id = activity.id
 
-    submitForm(data as unknown as Activity);
-  };
+    submitForm(data as unknown as Activity)
+  }
 
   return (
     <Paper sx={{ borderRadius: 3, padding: 3 }}>
@@ -33,7 +33,7 @@ export default function ActivityForm({
       <Box
         component="form"
         onSubmit={handleSubmit}
-        sx={{ display: "flex", flexDirection: "column", gap: 3 }}
+        sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}
       >
         <TextField name="title" label="Title" defaultValue={activity?.title} />
         <TextField
@@ -56,7 +56,7 @@ export default function ActivityForm({
         />
         <TextField name="city" label="City" defaultValue={activity?.city} />
         <TextField name="venue" label="Venue" defaultValue={activity?.venue} />
-        <Box sx={{ display: "flex", justifyContent: "end", gap: 3 }}>
+        <Box sx={{ display: 'flex', justifyContent: 'end', gap: 3 }}>
           <Button onClick={closeForm} color="inherit">
             Cancel
           </Button>
@@ -66,5 +66,5 @@ export default function ActivityForm({
         </Box>
       </Box>
     </Paper>
-  );
+  )
 }
